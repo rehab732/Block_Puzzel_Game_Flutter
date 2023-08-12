@@ -59,7 +59,7 @@ class _GameBoardState extends State<GameBoard> {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-              title: Text("GAME OVER"),
+              title:const Text("GAME OVER"),
               content: Text("Your Score is : $currentScore"),
               actions: [
                 TextButton(
@@ -67,7 +67,7 @@ class _GameBoardState extends State<GameBoard> {
                       resetGame();
                       Navigator.pop(context);
                     },
-                    child: Text("Reset Game"))
+                    child:const Text("Reset Game"))
               ],
             ));
   }
@@ -109,13 +109,12 @@ class _GameBoardState extends State<GameBoard> {
   void checkLanding() {
     if (checkCollision(Directions.down)) {
       for (int i = 0; i < current.positions.length; i++) {
-        int row = (current.positions[i] / rowlenght).floor();
+        int row = (current.positions[i]/ rowlenght).floor();
         int columm = current.positions[i] % rowlenght;
         if (row >= 0 && columm >= 0) {
           gameBoard[row][columm] = current.type;
         }
       }
-
       createNewPiece();
     }
   }
@@ -201,7 +200,8 @@ class _GameBoardState extends State<GameBoard> {
                     int columm = index % rowlenght;
                     if (current.positions.contains(index)) {
                       return Pixel(
-                        color: Colors.red,
+                        color: current.color,
+                        
                       );
                     } else if (gameBoard[row][columm] != null) {
                       final Teromino? terType = gameBoard[row][columm];
@@ -216,7 +216,7 @@ class _GameBoardState extends State<GameBoard> {
             ),
             Text(
               'Score $currentScore',
-              style: TextStyle(color: Colors.white),
+              style:const TextStyle(color: Colors.white),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 50.0, top: 50.0),
@@ -239,6 +239,8 @@ class _GameBoardState extends State<GameBoard> {
               ),
             ),
           ],
-        ));
+        ),
+        );
   }
 }
+

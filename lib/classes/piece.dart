@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:puzzle/constants/lenght.dart';
 import 'package:puzzle/constants/values.dart';
 import 'package:puzzle/screens/game_board.dart';
-
 import '../constants/colors.dart';
 import '../constants/directions.dart';
 
