@@ -40,20 +40,39 @@ class _GameBoardState extends State<GameBoard> {
     Duration frameRate = const Duration(milliseconds: 400);
     gameLoop(frameRate);
   }
-
-  void gameLoop(Duration framRate) {
-    Timer.periodic(framRate, (timer) {
-      setState(() {
-        clearLines();
+void gameLoop(Duration framRate) {
+  Timer.periodic(framRate, (timer) {
+    setState(() {
+      current.movePiece(Directions.down); // Move the piece down first
+      clearLines();
+      if (checkCollision(Directions.down)) {
         checkLanding();
-        if (gameOver == true) {
-          timer.cancel();
-          showGameDialog();
-        }
-        current.movePiece(Directions.down);
-      });
+      }
+      if (gameOver == true) {
+        timer.cancel();
+        showGameDialog();
+      }
     });
-  }
+  });
+}
+
+
+  // void gameLoop(Duration framRate) {
+  //   Timer.periodic(framRate, (timer) {
+  //     setState(() {
+  //       clearLines();
+  //       if(checkCollision(Directions.down))
+  //       {
+  //       checkLanding();
+  //       }
+  //       if (gameOver == true) {
+  //         timer.cancel();
+  //         showGameDialog();
+  //       }
+  //       current.movePiece(Directions.down);
+  //     });
+  //   });
+  // }
 
   void showGameDialog() {
     showDialog(
