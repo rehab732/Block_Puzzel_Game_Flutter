@@ -10,8 +10,27 @@ class Piece {
   List<int> positions = [];
   void inizalizePiece() {
     switch (type) {
-      case Teromino.L:
-        positions = [4, 14, 24, 25];
+        case Teromino.L:
+        positions = [-26, -16, -6, -5];
+        break;
+        case Teromino.J:
+        positions = [-25, -15, -5, -6];
+        break;
+        case Teromino.I:
+        positions = [-4, -5, -6, -7];
+        break;
+        case Teromino.O:
+        positions = [-15, -16, -5, -6];
+        break;
+        case Teromino.S:
+        positions = [-15, -14, -6, -5];
+        break;
+    case Teromino.Z:
+        positions = [-17, -16, -6, -5];
+        break;
+
+        case Teromino.T:
+        positions = [-26, -16, -6, -15];
         break;
       default:
     }
